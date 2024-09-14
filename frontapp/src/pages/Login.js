@@ -25,16 +25,10 @@ const FormContainer = styled.form`
     padding: 10px;
   }
 `;
-const AvisoLogin = styled.h4`{
-  color: #e82727;
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
+const AvisoLogin = styled.h4`{ 
+  text-align: center;   
   margin: 40px auto;
-  padding: 20px 15px;
-  box-shadow: 0px 0px 5px #ccc;
-  border-radius: 8px;
-  background-color: #fff;
+  padding: 20px 15px;   
 
   @media (max-width: 768px) {
     margin: 20px;
@@ -210,7 +204,7 @@ const Login = () => {
         <AvisoLogin>
           Email: demo@gmail.com
           <br/>
-          Senha:demo
+          Senha: demo
           </AvisoLogin>        
         <br />
         <Input
