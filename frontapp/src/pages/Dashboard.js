@@ -5,14 +5,25 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+`;
+
 const Container = styled.div`
-  width: 100%;  
+  width: 100%;
+  max-width: 1024px;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 `;
+
+const Title = styled.h2``;
 
 const Button = styled.button`
   padding: 10px;
@@ -27,14 +38,14 @@ const Button = styled.button`
 
 const FormContainer = styled.form`
   display: flex;
-  justify-content: flex-start;
-  flex-direction: row;  
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
   background-color: #fff;
   padding: 20px;
   box-shadow: 0px 0px 5px #ccc;
   border-radius: 5px;
-  width: 300px;
+   width: 300px;
 `;
 
 const InputArea = styled.div`
@@ -130,8 +141,8 @@ const Dashboard = () => {
   };
 
   return (
-           
-      <Container>      
+     <Wrapper>      
+      <Container>        
         <Title>Editar Usuários</Title>
         <p>Caso trave - Atualizar a página (f5)</p>
         <FormContainer onSubmit={handleSubmit}>
@@ -193,7 +204,7 @@ const Dashboard = () => {
         </UserGrid>
         <ToastContainer />
       </Container>
-    
+    </Wrapper>
   );
 };
 
