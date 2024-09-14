@@ -141,9 +141,9 @@ const Dashboard = () => {
   };
 
   return (
-    <Wrapper>
-      <NavbarDash />
+     <Wrapper>      
       <Container>
+      <NavbarDash />
         <Title>Editar Usuários</Title>
         <p>Caso trave - Atualizar a página (f5)</p>
         <FormContainer onSubmit={handleSubmit}>
