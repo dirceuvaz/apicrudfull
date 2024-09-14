@@ -92,7 +92,7 @@ const Dashboard = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:8800");
+      const res = await axios.get("https://apicrudfull-0e4zyy7o.b4a.run");
       setUsers(res.data);
     } catch (error) {
       toast.error("Erro ao carregar usuários.");
@@ -104,10 +104,10 @@ const Dashboard = () => {
 
     try {
       if (editingId) {
-        await axios.put(`http://localhost:8800/${editingId}`, userDetails);
+        await axios.put(`https://apicrudfull-0e4zyy7o.b4a.run/${editingId}`, userDetails);
         toast.success("Usuário atualizado com sucesso.");
       } else {
-        await axios.post("http://localhost:8800", userDetails);
+        await axios.post("https://apicrudfull-0e4zyy7o.b4a.run", userDetails);
         toast.success("Usuário criado com sucesso.");
       }
       fetchUsers();
@@ -131,7 +131,7 @@ const Dashboard = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8800/${id}`);
+      await axios.delete(`https://apicrudfull-0e4zyy7o.b4a.run/${id}`);
       toast.success("Usuário excluído com sucesso.");
       fetchUsers();
     } catch (error) {
