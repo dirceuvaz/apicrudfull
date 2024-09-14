@@ -13,7 +13,6 @@ RUN npm install
 # Copia todos os arquivos da aplicação para o diretório de trabalho
 COPY backend ./
 
-EXPOSE 3306
 EXPOSE 8800
 
 # Define o comando para iniciar a aplicação
