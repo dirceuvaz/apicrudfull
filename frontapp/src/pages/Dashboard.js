@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NavbarDash from "../components/NavbarDash";
 
 const Wrapper = styled.div`
   display: flex;
@@ -141,6 +142,7 @@ const Dashboard = () => {
 
   return (
     <Wrapper>
+      <NavbarDash />
       <Container>
         <Title>Editar Usuários</Title>
         <p>Caso trave - Atualizar a página (f5)</p>
