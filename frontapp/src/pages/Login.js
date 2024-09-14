@@ -25,6 +25,22 @@ const FormContainer = styled.form`
     padding: 10px;
   }
 `;
+const AvisoLogin = styled.h4`{
+  color: #e82727;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px 15px;
+  box-shadow: 0px 0px 5px #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+
+  @media (max-width: 768px) {
+    margin: 20px;
+    padding: 15px;
+}
+`;
 
 const Voltar = styled.button`
   padding: 10px 20px;
@@ -191,8 +207,11 @@ const Login = () => {
       <FormContainer onSubmit={handleLogin}>
         <Title2>Para Acessar</Title2>
         <br />
-        <p>Email: admin@gmail.com</p>
-        <p>Senha:12345</p>
+        <AvisoLogin>
+          Email: demo@gmail.com
+          <br/>
+          Senha:demo
+          </AvisoLogin>        
         <br />
         <Input
           type="email"
