@@ -3,19 +3,16 @@ import styled from 'styled-components';
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import NavbarDash from "../components/NavbarDash";
+
 
 const Container = styled.div`
-  width: 100%;
-  max-width: 1024px;
+  width: 100%;  
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 `;
-
-const Title = styled.h2``;
 
 const Button = styled.button`
   padding: 10px;
@@ -133,9 +130,8 @@ const Dashboard = () => {
   };
 
   return (
-     <Wrapper>      
-      <Container>
-      <NavbarDash />
+           
+      <Container>      
         <Title>Editar Usuários</Title>
         <p>Caso trave - Atualizar a página (f5)</p>
         <FormContainer onSubmit={handleSubmit}>
@@ -197,7 +193,7 @@ const Dashboard = () => {
         </UserGrid>
         <ToastContainer />
       </Container>
-    </Wrapper>
+    
   );
 };
 
