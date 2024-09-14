@@ -5,14 +5,6 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NavbarDash from "../components/NavbarDash";
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-`;
-
 const Container = styled.div`
   width: 100%;
   max-width: 1024px;
@@ -38,14 +30,14 @@ const Button = styled.button`
 
 const FormContainer = styled.form`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;  
   gap: 10px;
   background-color: #fff;
   padding: 20px;
   box-shadow: 0px 0px 5px #ccc;
   border-radius: 5px;
-   width: 300px;
+  width: 300px;
 `;
 
 const InputArea = styled.div`
