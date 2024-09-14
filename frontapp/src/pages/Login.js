@@ -189,7 +189,10 @@ const Login = () => {
     <Container>
       <Title>Patas do Amanhã</Title>
       <FormContainer onSubmit={handleLogin}>
-        <Title2>Acessar</Title2>
+        <Title2>Para Acessar</Title2>
+        <br />
+        <p>Email: admin@gmail.com</p>
+        <p>Senha:12345</p>
         <br />
         <Input
           type="email"
