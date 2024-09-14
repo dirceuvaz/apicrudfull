@@ -1,0 +1,9 @@
+{
+    "name": "apicrudfull",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start:backend": "cd backend && npm start"
+    },
+    "dependencies": {}
+}
