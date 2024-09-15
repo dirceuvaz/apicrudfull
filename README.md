@@ -26,4 +26,4 @@ Siga estas instruções para ter uma cópia do projeto em funcionamento na sua m
 1. **Clone o repositório**
 
    ```bash
-   git clone https://github.com/seuusuario/projeto-controle-doacao-animais.git
+   git clone [https://github.com/dirceuvaz/apicrudfull.git]
