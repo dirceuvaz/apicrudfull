@@ -6,7 +6,9 @@ import { loginUser } from "./controllers/user.js";
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: "*"  // origin: '*' // Permite todas as origens (não recomendado para produção)
+}))
 
 app.use("/", userRoutes)
 app.post("/login", loginUser);
