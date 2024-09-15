@@ -25,6 +25,7 @@ const FormContainer = styled.form`
     padding: 10px;
   }
 `;
+
 const AvisoLogin = styled.h4`{ 
   text-align: center;   
   margin: 40px auto;
@@ -40,7 +41,7 @@ const Voltar = styled.button`
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
-  background-color: #2c73d2;
+  background-color: #03a64a;
   color: white;
   border: none;
   border-radius: 5px;
@@ -51,7 +52,7 @@ const Voltar = styled.button`
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: #1b5bab;
+    background-color: #003d1a;
     transform: translateY(-3px);
   }
 
@@ -77,7 +78,7 @@ const Input = styled.input`
 const Button = styled.button`
   padding: 12px;
   cursor: pointer;
-  background-color: #2c73d2;
+  background-color: #03a64a;
   color: white;
   border: none;
   border-radius: 5px;
@@ -85,7 +86,7 @@ const Button = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #1a5ba0;
+    background-color: #003d1a;
   }
 
   @media (max-width: 480px) {
@@ -221,7 +222,7 @@ const Login = () => {
         />
         <Button type="submit">Login</Button>
       </FormContainer>
-      <Voltar onClick={() => navigate(-1)}>Voltar</Voltar>
+      <Voltar onClick={() => navigate("/")}>Voltar</Voltar>
       <Footer>Patas do Amanhã - Desenvolvido por Grupo 25</Footer>
     </Container>
   );

@@ -1,11 +1,12 @@
-
-import GlobalStyle from "./styles/global";
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
+
+
+
 
 
 function App() {

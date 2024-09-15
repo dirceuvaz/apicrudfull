@@ -37,7 +37,7 @@ const NavLink = styled(Link)`
 `;
 
 const LoginBtn = styled.button`
-  background-color: #2980b9;
+  background-color: #03a64a;
   cursor: pointer;
   border: none;
   border-radius: 25px;

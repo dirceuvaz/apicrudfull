@@ -37,7 +37,7 @@ const NavLink = styled(Link)`
 `;
 
 const LoginBtn = styled.button`
-  background-color: #2980b9;
+  background-color: #03a64a;
   cursor: pointer;
   border: none;
   border-radius: 25px;
@@ -52,18 +52,18 @@ const LoginBtn = styled.button`
   }
 `;
 
-function Navbar() {
+function NavbarDash() {
   return (
     <Nav>
       <Logo>Patas do Amanhã</Logo>
       <Menu>
         <NavLink to="/">Home</NavLink>
         <Link to="/login">
-          <LoginBtn>Logar</LoginBtn>
+          <LoginBtn>Sair</LoginBtn>
         </Link>
       </Menu>
     </Nav>
   );
 }
 
-export default Navbar;
+export default NavbarDash;
