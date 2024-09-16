@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 // URL da API
-const API_URL = 'http://localhost:8800/';
+const API_URL = 'https://apicrudfull-0e4zyy7o.b4a.run/';
 
 const UserManagementContainer = styled.div`
   width: 100%;
