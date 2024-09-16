@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import UserManagement from '../components/UserManagement'; // Importe o novo componente
+import UserManagement from '../components/UserManagement'; // Importe o componente de gerenciamento de usuários
+import CategoriaManagement from '../components/CategoriaManagement'; // Importe o novo componente de gerenciamento de categorias
 import NavbarDash from '../components/NavbarDash';
 
 const DashboardContainer = styled.div`
@@ -90,6 +91,8 @@ const Dashboard = () => {
     switch (activeSection) {
       case 'users':
         return <UserManagement />;
+      case 'categories':
+        return <CategoriaManagement />;
       case 'home':
       default:
         return <h2>Bem-vindo ao Projeto Patas do Amanhã!</h2>;
@@ -97,9 +100,8 @@ const Dashboard = () => {
   };
 
   return (
-    <>      
+    <>
       <NavbarDash />
-      
       <DashboardContainer>
         <Sidebar>
           <SidebarMenu>

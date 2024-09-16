@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 // URL da API
-const API_URL = 'https://apicrudfull-0e4zyy7o.b4a.run'; // Base URL da API
+const API_URL = 'http://localhost:8800/';
 
 const UserManagementContainer = styled.div`
   width: 100%;
@@ -25,7 +25,7 @@ const FormContainer = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Adiciona espaço entre os campos do formulário */
+    gap: 20px;
   }
 
   label {
@@ -37,14 +37,14 @@ const FormContainer = styled.div`
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
-    width: 100%; /* Faz com que o campo de entrada ocupe toda a largura disponível */
+    width: 100%;
   }
 
   button {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #2c6b2f; /* Verde escuro */
+    background-color: #2c6b2f;
     color: #fff;
     cursor: pointer;
     font-size: 16px;
@@ -80,17 +80,17 @@ const UserTable = styled.table`
     color: #fff;
     cursor: pointer;
     font-size: 14px;
-    margin-right: 10px; /* Adiciona espaço entre os botões */
+    margin-right: 10px;
 
     &.edit {
-      background-color: #ffa000; /* Amber */
+      background-color: #ffa000;
       &:hover {
         background-color: #ff6f00;
       }
     }
 
     &.delete {
-      background-color: #f44336; /* Red */
+      background-color: #f44336;
       &:hover {
         background-color: #d32f2f;
       }
@@ -123,7 +123,7 @@ const ModalContent = styled.div`
 
   button {
     margin-top: 10px;
-    background-color: #f44336; /* Red */
+    background-color: #f44336;
     &:hover {
       background-color: #d32f2f;
     }
@@ -139,18 +139,22 @@ const UserManagement = () => {
     fone: '',
     data_nascimento: ''
   });
-  const [editIndex, setEditIndex] = useState(null);
+  const [editId, setEditId] = useState(null);
   const [emailError, setEmailError] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetchUsers();
+    fetchUsers(); // Fetch initial users
+    const intervalId = setInterval(fetchUsers, 2000); // Fetch every 2 seconds
+
+    // Clear interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   // Função para buscar usuários da API
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`${API_URL}/`);
+      const response = await axios.get(API_URL);
       setUsers(response.data);
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
@@ -165,7 +169,7 @@ const UserManagement = () => {
 
   // Função para verificar se o email já existe
   const emailExists = (email) => {
-    return users.some(user => user.email === email);
+    return users.some(user => user.email === email && user.id !== editId);
   };
 
   // Função para lidar com o envio do formulário (criar/atualizar usuário)
@@ -179,19 +183,15 @@ const UserManagement = () => {
     }
 
     try {
-      if (editIndex !== null) {
+      if (editId) {
         // Atualizar usuário
-        const userId = users[editIndex].id;
-        const response = await axios.put(`${API_URL}/${userId}`, form);
-        const updatedUsers = [...users];
-        updatedUsers[editIndex] = { ...response.data, id: userId };
-        setUsers(updatedUsers);
-        setEditIndex(null);
+        await axios.put(`${API_URL}${editId}`, form);
       } else {
         // Criar novo usuário
-        const response = await axios.post(`${API_URL}/`, form);
-        setUsers([...users, response.data]);
+        await axios.post(API_URL, form);
       }
+      // Atualizar a lista de usuários após operação
+      await fetchUsers(); // Atualiza os usuários imediatamente
       // Resetar o formulário
       setForm({
         nome: '',
@@ -200,23 +200,25 @@ const UserManagement = () => {
         fone: '',
         data_nascimento: ''
       });
+      setEditId(null);
     } catch (error) {
       console.error('Erro ao salvar usuário:', error.response ? error.response.data : error.message);
     }
   };
 
   // Função para lidar com a edição do usuário
-  const handleEdit = (index) => {
-    setForm(users[index]);
-    setEditIndex(index);
+  const handleEdit = (id) => {
+    const user = users.find(u => u.id === id);
+    setForm(user);
+    setEditId(id);
   };
 
   // Função para lidar com a exclusão do usuário
-  const handleDelete = async (index) => {
+  const handleDelete = async (id) => {
     try {
-      const userId = users[index].id;
-      await axios.delete(`${API_URL}/${userId}`);
-      setUsers(users.filter((_, i) => i !== index));
+      await axios.delete(`${API_URL}${id}`);
+      // Atualiza a lista de usuários após exclusão
+      await fetchUsers(); // Atualiza os usuários imediatamente
     } catch (error) {
       console.error('Erro ao excluir usuário:', error);
     }
@@ -225,14 +227,14 @@ const UserManagement = () => {
   return (
     <UserManagementContainer>
       <FormContainer>
-        <h2>{editIndex !== null ? 'Editar Usuário' : 'Criar Usuário'}</h2>
+        <h2>{editId ? 'Editar Usuário' : 'Adicionar Usuário'}</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Nome:</label>
             <input
               type="text"
               name="nome"
-              value={form.nome}
+              value={form.nome || ''}
               onChange={handleChange}
               required
             />
@@ -242,7 +244,7 @@ const UserManagement = () => {
             <input
               type="email"
               name="email"
-              value={form.email}
+              value={form.email || ''}
               onChange={handleChange}
               required
             />
@@ -252,7 +254,7 @@ const UserManagement = () => {
             <input
               type="password"
               name="senha"
-              value={form.senha}
+              value={form.senha || ''}
               onChange={handleChange}
               required
             />
@@ -262,7 +264,7 @@ const UserManagement = () => {
             <input
               type="text"
               name="fone"
-              value={form.fone}
+              value={form.fone || ''}
               onChange={handleChange}
               required
             />
@@ -272,13 +274,13 @@ const UserManagement = () => {
             <input
               type="date"
               name="data_nascimento"
-              value={form.data_nascimento}
+              value={form.data_nascimento || ''}
               onChange={handleChange}
               required
             />
           </div>
           <button type="submit">
-            {editIndex !== null ? 'Atualizar' : 'Criar'}
+            {editId ? 'Atualizar' : 'Adicionar'}
           </button>
         </form>
       </FormContainer>
@@ -293,15 +295,15 @@ const UserManagement = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user, index) => (
+          {users.map(user => (
             <tr key={user.id}>
               <td>{user.nome}</td>
               <td>{user.email}</td>
               <td>{user.fone}</td>
               <td>{user.data_nascimento}</td>
               <td>
-                <button className="edit" onClick={() => handleEdit(index)}>Editar</button>
-                <button className="delete" onClick={() => handleDelete(index)}>Excluir</button>
+                <button className="edit" onClick={() => handleEdit(user.id)}>Editar</button>
+                <button className="delete" onClick={() => handleDelete(user.id)}>Excluir</button>
               </td>
             </tr>
           ))}
