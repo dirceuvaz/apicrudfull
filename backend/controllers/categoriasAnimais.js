@@ -1,6 +1,6 @@
 import { db } from '../db.js';
 
-// Função para obter todas as categorias de animais
+
 export const getCategoriasAnimais = (_, res) => {
   const q = "SELECT * FROM categoria_animais";
 
@@ -11,7 +11,7 @@ export const getCategoriasAnimais = (_, res) => {
   });
 };
 
-// Função para adicionar uma nova categoria de animal
+
 export const addCategoriaAnimal = (req, res) => {
   const { nome } = req.body;
 
@@ -29,8 +29,6 @@ export const addCategoriaAnimal = (req, res) => {
   });
 };
 
-
-// Função para atualizar uma categoria de animal
 export const updateCategoriaAnimal = (req, res) => {
   const { id } = req.params;
   const { nome } = req.body;
@@ -53,7 +51,6 @@ export const updateCategoriaAnimal = (req, res) => {
   });
 };
 
-// Função para deletar uma categoria de animal
 export const deleteCategoriaAnimal = (req, res) => {
   const { id } = req.params;
 

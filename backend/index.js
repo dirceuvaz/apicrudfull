@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import userRoutes from './routes/users.js';
-import categoriasAnimaisRoutes from './routes/categoriasAnimais.js'; // Importa as rotas de categorias de animais
+import categoriasAnimaisRoutes from './routes/categoriasAnimais.js'; //categoria
 import { loginUser } from './controllers/user.js';
 
 const app = express();
@@ -15,8 +15,7 @@ app.use(cors({
 app.use('/', userRoutes);
 app.post('/login', loginUser);
 
-// Rotas de categorias de animais
-app.use('/categorias', categoriasAnimaisRoutes);  // Prefixo para as rotas de categorias de animais
+app.use('/categorias', categoriasAnimaisRoutes); // Rota para categorias
 
 // Inicie o servidor
 app.listen(8800, () => {
