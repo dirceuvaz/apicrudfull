@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import UserManagement from '../components/UserManagement'; // Importe o componente de gerenciamento de usuários
 import CategoriaManagement from '../components/CategoriaManagement'; // Importe o novo componente de gerenciamento de categorias
 import NavbarDash from '../components/NavbarDash';
+import AnimalManagement from '../components/AnimalManagement';
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -93,6 +94,8 @@ const Dashboard = () => {
         return <UserManagement />;
       case 'categories':
         return <CategoriaManagement />;
+        case 'animals':
+          return <AnimalManagement />;
       case 'home':
       default:
         return <h2>Bem-vindo ao Projeto Patas do Amanhã!</h2>;

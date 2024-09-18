@@ -1,23 +1,33 @@
 import express from 'express';
 import cors from 'cors';
-import userRoutes from './routes/users.js';
+
+
+
+import userRoutes from './routes/users.js'; //usuarios
 import categoriasAnimaisRoutes from './routes/categoriasAnimais.js'; //categoria
-import { loginUser } from './controllers/user.js';
+import animaisRoutes from './routes/animais.js'; //animais
+//import voluntariosRoutes from './routes/voluntarios.js'; //voluntários
+//import pedidoRoutes from './routes/pedidoRoutes.js'; //pedidos
+
 
 const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: '*'  // Permite todas as origens (não recomendado para produção)
+  origin: 'http://localhost:3000',
 }));
 
-// Rotas de usuários
-app.use('/', userRoutes);
-app.post('/login', loginUser);
+app.use('/', userRoutes);  // Rota para usuários
 
-app.use('/categorias', categoriasAnimaisRoutes); // Rota para categorias
+app.use('/categorias', categoriasAnimaisRoutes); // Rota para usuários
 
-// Inicie o servidor
+app.use('/animais', animaisRoutes); // Rota para animais
+
+//app.use('/voluntarios', voluntariosRoutes);// Rota para voluntários
+
+//app.use('/pedidos', pedidoRoutes);  // Rota para pediodos
+
+// Start Server
 app.listen(8800, () => {
   console.log('Servidor rodando na porta 8800');
 });
