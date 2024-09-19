@@ -12,10 +12,10 @@ import pedidoRoutes from './routes/pedidoRoutes.js'; //pedidos
 
 
 const app = express();
-app.use(compression()); // Habilita compressão para todas as respostas
+app.use(compression()); // compressão dos tamanhos dos pacotes
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: 'https://apicrudfull.vercel.app/',
 }));
 
 app.use('/', userRoutes);  // Rota para usuários
