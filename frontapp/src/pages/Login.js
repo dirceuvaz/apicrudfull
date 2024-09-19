@@ -180,7 +180,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://apicrudfull-0e4zyy7o.b4a.run/login", {
+      const response = await axios.post("https://apicrudfull-0e4zyy7o.b4a.run/", {
         email,
         senha,
       });
