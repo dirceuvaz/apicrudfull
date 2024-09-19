@@ -14,7 +14,6 @@ export const loginUser = (req, res) => {
       return res.status(401).json("Email ou senha incorretos.");
     }
 
-    
     return res.status(200).json("Login bem-sucedido!");
   });
 };

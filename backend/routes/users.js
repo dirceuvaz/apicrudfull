@@ -4,7 +4,7 @@ import { loginUser, addUser, deleteUser, getUsers, updateUser } from "../control
 
 const router = express.Router();
 
-router.post("/login", loginUser); 
+router.post("/login", loginUser);  
 router.get("/", getUsers);
 router.post("/", addUser);
 router.put("/:id", updateUser);
