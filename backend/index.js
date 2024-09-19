@@ -15,7 +15,7 @@ const app = express();
 app.use(compression()); // compressão dos tamanhos dos pacotes
 app.use(express.json());
 app.use(cors({
-  origin: 'https://apicrudfull.vercel.app/',
+  origin: '108.139.113.77',
 }));
 
 app.use('/', userRoutes);  // Rota para usuários
