@@ -223,7 +223,7 @@ const Login = () => {
         <Button type="submit">Login</Button>
       </FormContainer>
       <Voltar onClick={() => navigate("/")}>Voltar</Voltar>
-      <Footer>Patas do Amanhã - Desenvolvido por Grupo 25</Footer>
+      <Footer>Patas do Amanhã - Desenvolvido pelo Grupo 25</Footer>
     </Container>
   );
 };
