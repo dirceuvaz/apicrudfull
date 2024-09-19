@@ -11,21 +11,21 @@ import voluntariosRoutes from './routes/voluntarios.js'; // voluntários
 import pedidoRoutes from './routes/pedidoRoutes.js'; // pedidos
 
 const app = express();
-app.use(compression()); // Habilita compressão para todas as respostas
+app.use(compression()); // compressão de pacotes
 app.use(express.json());
 
 const allowedOrigins = ['http://localhost:3000', 'https://apicrudfull.vercel.app'];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Permite requisições sem origem (como Postman ou CURL)
+    // Permite requisições sem origem 
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  // Se você estiver usando cookies ou outros tipos de autenticação
+  // Usando cookies ou outros tipos de autenticação
   credentials: true,
 }));
 
