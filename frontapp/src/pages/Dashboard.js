@@ -4,6 +4,7 @@ import UserManagement from '../components/UserManagement'; // Importe o componen
 import CategoriaManagement from '../components/CategoriaManagement'; // Importe o novo componente de gerenciamento de categorias
 import NavbarDash from '../components/NavbarDash';
 import AnimalManagement from '../components/AnimalManagement';
+import VoluntarioManagement from '../components/VoluntarioManagement';
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -94,8 +95,10 @@ const Dashboard = () => {
         return <UserManagement />;
       case 'categories':
         return <CategoriaManagement />;
-        case 'animals':
-          return <AnimalManagement />;
+      case 'animals':
+        return <AnimalManagement />;
+      case 'volunteers':
+        return <VoluntarioManagement />;
       case 'home':
       default:
         return <h2>Bem-vindo ao Projeto Patas do Amanhã!</h2>;
