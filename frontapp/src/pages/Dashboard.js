@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import UserManagement from '../components/UserManagement'; // Importe o componente de gerenciamento de usuários
-import CategoriaManagement from '../components/CategoriaManagement'; // Importe o novo componente de gerenciamento de categorias
+import UserManagement from '../components/UserManagement'; 
+import CategoriaManagement from '../components/CategoriaManagement'; 
 import NavbarDash from '../components/NavbarDash';
 import AnimalManagement from '../components/AnimalManagement';
+import PedidoManagement from '../components/PedidoManagement';
 import VoluntarioManagement from '../components/VoluntarioManagement';
+
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -93,18 +95,20 @@ const Dashboard = () => {
     switch (activeSection) {
       case 'users':
         return <UserManagement />;
-      case 'categories':
-        return <CategoriaManagement />;
       case 'animals':
-        return <AnimalManagement />;
+          return <AnimalManagement />;  
+      case 'categories':
+        return <CategoriaManagement />;      
       case 'volunteers':
-        return <VoluntarioManagement />;
+          return <VoluntarioManagement />;
+      case 'orders':
+          return <PedidoManagement />;
       case 'home':
       default:
         return <h2>Bem-vindo ao Projeto Patas do Amanhã!</h2>;
     }
   };
-
+ 
   return (
     <>
       <NavbarDash />
